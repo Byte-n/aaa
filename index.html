@@ -657,23 +657,25 @@
     switch (num) {
         case 1:
             document.title = '添加到桌面';
+            window.name = 1;
+            location.hash = '#2';
             // 第一步时，就替换域名，替换时，需要重置哈希为空
             if (location.href.indexOf('aiyongbao')!==-1){
                 location.href = location.href.replace('aiyongbao','aiyongtech')
                     // 将后面的hash 替换为 #1
-                    .replace(/(#.*)$/g, '#1');
+                    .replace(/(#.*)$/g, '#2');
             }
             if (location.href.indexOf('localhost')!==-1){
                 location.href = location.href.replace('localhost','127.0.0.1')
                     // 将后面的hash 替换为 #1
-                    .replace(/(#.*)$/g, '#1');
+                    .replace(/(#.*)$/g, '#2');
             }
             // http://byte_n.gitee.io/abc/#1
             if (location.href.indexOf('byte_n.gitee')!==-1){
-                // https://byte-n.github.io/aaa/#1
+                // https://byte-n.github.io/abc/#1
                 location.href = location.href.replace('byte_n.gitee','byte-n.github')
-                    // 将后面的hash 替换为 #1
-                    .replace(/(#.*)$/g, '#1');
+                    // 将后面的hash 替换为 #2
+                    .replace(/(#.*)$/g, '#2');
             }
             break;
         default:
@@ -746,6 +748,7 @@
             window.name = num;
         }
     }
+    // 先设置 window.name. location.href 以后 js还是会执行,执行的进度在不同的浏览器表现不同！！！也还取决浏览器跳转速度和网速
     incrHash();
 </script>
 
